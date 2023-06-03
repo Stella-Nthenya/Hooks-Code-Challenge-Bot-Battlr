@@ -1,5 +1,5 @@
 import React from "react";
-
+// ALL BOTS WILL BE DISPLAYED
 function BotCollection() {
   // Your code here
   return (

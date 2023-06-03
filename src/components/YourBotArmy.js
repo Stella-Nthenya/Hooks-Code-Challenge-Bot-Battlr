@@ -1,5 +1,7 @@
 import React from "react";
 
+// GREEN selected ones only
+
 function YourBotArmy() {
   //your bot army code here...
 
