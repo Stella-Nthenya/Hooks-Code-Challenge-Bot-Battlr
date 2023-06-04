@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
 
 function BotsPage() {
-  //start here with your code for step one
-  
+  const [selectedBots, setSelectedBots] = useState([]);
+
+  const addToArmy = (bot) => {
+    setSelectedBots((prevSelectedBots) => [...prevSelectedBots, bot]);
+  };
+
+  const releaseFromArmy = (botId) => {
+    setSelectedBots((prevSelectedBots) =>
+      prevSelectedBots.filter((bot) => bot.id !== botId)
+    );
+  };
 
   return (
     <div>
-      <YourBotArmy />
-      <BotCollection />
+      <YourBotArmy
+        selectedBots={selectedBots}
+        releaseFromArmy={releaseFromArmy}
+      />
+      <BotCollection addToArmy={addToArmy} />
     </div>
-  )
+  );
 }
 
 export default BotsPage;

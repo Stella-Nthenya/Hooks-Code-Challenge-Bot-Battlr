@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function BotCollection() {
+function BotCollection({ addToArmy }) {
   const [allBotsData, setAllBotsData] = useState([]);
 
   useEffect(() => {
@@ -22,6 +22,10 @@ function BotCollection() {
     getAllBots("http://localhost:8002/bots");
   }, []);
 
+  const handleAddToArmy = (bot) => {
+    addToArmy(bot);
+  };
+
   return (
     <div className="all-bots-container">
       {/* Collection of all bots */}
@@ -36,7 +40,11 @@ function BotCollection() {
           catchphrase,
           avatar_url,
         }) => (
-          <div className={`bot-container ${bot_class}`} key={id}>
+          <div
+            className={`bot-container ${bot_class}`}
+            key={id}
+            onClick={() => handleAddToArmy({ id, name, health, damage, armor, bot_class, catchphrase, avatar_url })}
+          >
             <div className="img-div">
               <img src={avatar_url} alt={name} width="100" height="100" />
             </div>
